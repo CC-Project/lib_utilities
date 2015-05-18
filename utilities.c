@@ -38,18 +38,19 @@
                 printf( "%d", (var >> i) & 1 );
         #endif
     }
+
+    void error(char* str)
+    {
+        #ifdef __AVR__
+            uart_tx_str(str);
+            uart_newline();
+        #else
+            fprintf(stderr, str);
+            fprintf(stderr, "\r\n"); // New line
+        #endif // __AVR__
+    }
 #endif
 
-void error(char* str)
-{
-    #ifdef __AVR__
-        uart_tx_str(str);
-        uart_newline();
-    #else
-        fprintf(stderr, str);
-        fprintf(stderr, "\r\n"); // New line
-    #endif // __AVR__
-}
 
 uint16_t int_pow(uint16_t a, uint16_t b)
 {
