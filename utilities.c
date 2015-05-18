@@ -39,6 +39,7 @@
         #endif
     }
 
+
     void error(char* str)
     {
         #ifdef __AVR__
@@ -50,17 +51,6 @@
         #endif // __AVR__
     }
 #endif
-    void error(char* str)
-    {
-        #ifdef __AVR__
-            uart_tx_str(str);
-            uart_newline();
-        #else
-            fprintf(stderr, str);
-            fprintf(stderr, "\r\n"); // New line
-        #endif // __AVR__
-    }
-
 
 uint16_t int_pow(uint16_t a, uint16_t b)
 {
@@ -75,5 +65,4 @@ uint16_t int_pow(uint16_t a, uint16_t b)
 uint8_t opposite_bit(uint8_t bit)
 {
     return (bit == 0) ? 1 : 0;
-}
 }
