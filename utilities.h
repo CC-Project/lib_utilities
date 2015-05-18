@@ -8,7 +8,7 @@
     #include <stdlib.h>
     #include <stdio.h>
     #include <inttypes.h>
-
+    #include <string.h>
 
     #ifdef __AVR__
         int freeRam(); // Returns the memory available
@@ -19,11 +19,10 @@
 
     #ifdef DEBUG
         void print_var_bits(uint8_t var);
-    #endif
 
+    #endif
     void error(char* str); // Exit the program with the error code EXIT_FAILED
 
     uint16_t int_pow(uint16_t a, uint16_t b);   // Computes a^b
     uint8_t opposite_bit(uint8_t bit);
-
 #endif // UTILITIES_H
