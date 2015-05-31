@@ -38,7 +38,8 @@
                 printf("%d", (var >> (n - i)) & 1);
         #endif
     }
-#endif
+
+
     void error(char* str)
     {
         #ifdef __AVR__
@@ -49,7 +50,7 @@
             fprintf(stderr, "\r\n"); // New line
         #endif // __AVR__
     }
-
+#endif
 
 uint16_t int_pow(uint16_t a, uint16_t b)
 {

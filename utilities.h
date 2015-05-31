@@ -3,6 +3,8 @@
     #pragma once
     #define DEBUG // If enable, debugging routines will be compiled
 
+    #define DEBUG
+
     #ifdef __AVR__
         #include "../lib_uart/uart.h"
     #endif
@@ -21,8 +23,8 @@
 
     #ifdef DEBUG
         void print_var_bits(uint16_t var, uint8_t n);
+        void error(char* str); // Exit the program with the error code EXIT_FAILED
     #endif
 
-    void error(char* str); // Exit the program with the error code EXIT_FAILED
     uint16_t int_pow(uint16_t a, uint16_t b);   // Computes a^b
 #endif // UTILITIES_H
