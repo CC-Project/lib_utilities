@@ -26,16 +26,16 @@
 #endif
 
 #ifdef DEBUG
-    void print_var_bits(uint8_t var)
+    void print_var_bits(uint16_t var, uint8_t n)
     {
         #ifdef __AVR__
             uart_tx_str("0b");
-            for(int8_t i = 0; i < 7; i++)
-                uart_tx_char((var >> i) & 1 + 0x30 ); // 0x30 is the offset needed to print the appropriate number
+            for(int8_t i = 1; i <= n; i++)
+                uart_tx_char((var >> (n - i)) & 1 + 0x30); // 0x30 is the offset needed to print the appropriate number
         #else
             printf("0b");
-            for(int8_t i = 0; i <7; i++)
-                printf( "%d", (var >> i) & 1 );
+            for(int8_t i = 1; i <= n; i++)
+                printf("%d", (var >> (n - i)) & 1);
         #endif
     }
 #endif
@@ -59,10 +59,4 @@ uint16_t int_pow(uint16_t a, uint16_t b)
         r = r * a;
 
     return r;
-}
-
-uint8_t opposite_bit(uint8_t bit)
-{
-    return (bit == 0) ? 1 : 0;
-}
 }
